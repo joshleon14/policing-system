@@ -1,8 +1,12 @@
 FROM node:latest
 
 WORKDIR /app
+ENV PATH /app/node_modules/.bin:$PATH
+COPY package.json .
+COPY package-lock.json .
 COPY . .
 RUN npm install
 EXPOSE 3000
-ENTRYPOINT ["node", "index.js"]
+ENTRYPOINT ["npm", "start"]
 
+    

@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  auth:
+    build: ./auth_server/
+    ports:
+      - "3000:3000"
+  authDB:
+    image: "postgres:latest"
+    volumes:
+      - ~/volumes/auth_db:/var/lib/postgresql/data
+    ports:
+      - "8000:5432"
+    environment:
+      - POSTGRES_NAME=auth
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=abc123
+    
+    

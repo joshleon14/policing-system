@@ -1,3 +1,4 @@
+import { Request, Response } from 'express';
 import { Prisma, PrismaClient } from '@prisma/client';
 import bcrypt from 'bcrypt';
 import { generateAccessToken, verifyAccessToken } from '../utils';
@@ -7,12 +8,12 @@ const prisma = new PrismaClient();
 const saltCount = 12;
 
 // Controller for handling Signup Request.
-export const SignUpController = async (req: any, res: any) =>{
+export const SignUpController = async (req: Request, res: Response) =>{
     const { first_name, last_name, username, email, password_one, password_two } = req.body;
 
     // verify that all data is filled out and not null
     if (!first_name || !last_name || !username || !email || !password_one || !password_two) {
-        return res.status(400).send({"message": ErrorMessages.MISSING_DATA}).stat;
+        return res.status(400).send({"message": ErrorMessages.MISSING_DATA});
     }
 
     // verify that the username provide is not taken.
@@ -73,7 +74,7 @@ export const SignUpController = async (req: any, res: any) =>{
 };
 
 // Controller for handling Login for users
-export const LoginController = async (req: any, res: any) => {
+export const LoginController = async (req: Request, res: Response) => {
 
     // Pull username and password value from body.
     const { username, password } = req.body;
@@ -112,7 +113,7 @@ export const LoginController = async (req: any, res: any) => {
 };
 
 // Controller for verifying token
-export const VerifyTokenController = (req: any, res: any) => {
+export const VerifyTokenController = (req: Request, res: Response) => {
 
     // Get Token from authorization header
     const authToken = req.header('Authorization');

@@ -14,5 +14,12 @@ services:
       - POSTGRES_NAME=auth
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=abc123
-    
-    
+  apiDB:
+    image: mongo
+    volumes:
+      - ~/volumes/api_db:/data/db
+    environment:
+      - MONGO_INITDB_USERNAME=root
+      - MONGO_INITDB_PASSWORD=Admin!
+    ports:
+      - 27017:27017

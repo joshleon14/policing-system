@@ -36,3 +36,4 @@ model Token {
   expire DateTime?
   is_valid Boolean @default(true)
 }
+

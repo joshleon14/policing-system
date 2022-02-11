@@ -2,17 +2,17 @@ import mongoose, { SchemaTypes } from 'mongoose';
 
 // Interface to define model Attributes
 interface IRank {
-    id: Number;
-    name: String;
+    id: number;
+    name: string;
 }
 
 // Interface for Document that our model will use.
 interface RankDoc extends mongoose.Document {
-    id: Number;
-    name: String;
+    id: number;
+    name: string;
 }
 
-// Interface for our model to use our build function to 
+// Interface for our model to use our build function to
 interface RankModelInterface extends mongoose.Model<RankDoc> {
     build(attr: IRank): any
 }

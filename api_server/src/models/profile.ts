@@ -2,8 +2,8 @@ import mongoose, { SchemaTypes } from 'mongoose';
 
 // Interface to define model Attributes
 interface IProfile {
-    id: Number;
-    user: String;
+    id: number;
+    user: string;
     phone_number: string;
     rank: mongoose.Schema.Types.ObjectId;
     department: mongoose.Schema.Types.ObjectId;
@@ -11,14 +11,14 @@ interface IProfile {
 
 // Interface for Document that our model will use.
 interface ProfileDoc extends mongoose.Document {
-    id: Number;
-    user: String;
+    id: number;
+    user: string;
     phone_number: string;
     rank: mongoose.Schema.Types.ObjectId;
     department: mongoose.Schema.Types.ObjectId;
 }
 
-// Interface for our model to use our build function to 
+// Interface for our model to use our build function to
 interface ProfileModelInterface extends mongoose.Model<ProfileDoc> {
     build(attr: IProfile): any
 }
@@ -39,11 +39,11 @@ const ProfileSchema = new mongoose.Schema({
         required: false
     },
     rank: {
-        type: mongoose.Schema.Types.ObjectId, 
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Rank'
     },
     department: {
-        type: mongoose.Schema.Types.ObjectId, 
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Department'
     }
 

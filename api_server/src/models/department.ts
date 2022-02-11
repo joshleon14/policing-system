@@ -2,21 +2,21 @@ import mongoose, { SchemaTypes } from 'mongoose';
 
 // Interface to define model Attributes
 interface IDepartment {
-    id: Number;
-    name: String;
-    supervisor: String;
+    id: number;
+    name: string;
+    supervisor: string;
     station: mongoose.Schema.Types.ObjectId;
 }
 
 // Interface for Document that our model will use.
 interface DepartmentDoc extends mongoose.Document {
-    id: Number;
-    name: String;
-    supervisor: String;
+    id: number;
+    name: string;
+    supervisor: string;
     station: mongoose.Schema.Types.ObjectId;
 }
 
-// Interface for our model to use our build function to 
+// Interface for our model to use our build function to
 interface DeparmentModelInterface extends mongoose.Model<DepartmentDoc> {
     build(attr: IDepartment): any
 }
@@ -35,7 +35,7 @@ const DepartmentSchema = new mongoose.Schema({
         type: String,
     },
     station: {
-        type: mongoose.Schema.Types.ObjectId, 
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Station'
     }
 });

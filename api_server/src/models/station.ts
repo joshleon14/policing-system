@@ -2,25 +2,25 @@ import mongoose, { SchemaTypes } from 'mongoose';
 
 // Interface to define model Attributes
 interface IStation {
-    id: Number;
-    name: String;
-    address: String;
-    state: String;
-    city: String;
-    zip: String;
+    id: number;
+    name: string;
+    address: string;
+    state: string;
+    city: string;
+    zip: string;
 }
 
 // Interface for Document that our model will use.
 interface StationDoc extends mongoose.Document {
-    id: Number;
-    name: String;
-    address: String;
-    state: String;
-    city: String;
-    zip: String;
+    id: number;
+    name: string;
+    address: string;
+    state: string;
+    city: string;
+    zip: string;
 }
 
-// Interface for our model to use our build function to 
+// Interface for our model to use our build function to
 interface StationModelInterface extends mongoose.Model<StationDoc> {
     build(attr: IStation): any
 }

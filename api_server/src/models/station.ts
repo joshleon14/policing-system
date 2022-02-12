@@ -2,7 +2,6 @@ import mongoose, { SchemaTypes } from 'mongoose';
 
 // Interface to define model Attributes
 interface IStation {
-    id: number;
     name: string;
     address: string;
     state: string;
@@ -12,7 +11,6 @@ interface IStation {
 
 // Interface for Document that our model will use.
 interface StationDoc extends mongoose.Document {
-    id: number;
     name: string;
     address: string;
     state: string;
@@ -22,7 +20,7 @@ interface StationDoc extends mongoose.Document {
 
 // Interface for our model to use our build function to
 interface StationModelInterface extends mongoose.Model<StationDoc> {
-    build(attr: IStation): any
+    build(attr: IStation): StationDoc
 }
 
 
@@ -60,6 +58,6 @@ stationSchema.statics.build = (attr: IStation) => {
 };
 
 // Create model.
-const Station = mongoose.model<any, StationModelInterface>('Station', stationSchema);
+const Station = mongoose.model<StationDoc, StationModelInterface>('Station', stationSchema);
 
 export default Station;

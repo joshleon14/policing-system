@@ -1,13 +1,19 @@
 import express from 'express';
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
+
+import { DepartmentRouter, StationRouter } from './routes';
 
 const app = express();
 const port = 3001;
 const DBURL = "mongodb://localhost:27017/api";
 
-app.get("/", (req, res) => {
-    res.send("Hello API");
-});
+
+// Default Middleware for support for JSON
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
+app.use("/department", DepartmentRouter);
+app.use("/station", StationRouter);
 
 // creating mongoDB connection
 mongoose.connect(DBURL).then(() => {

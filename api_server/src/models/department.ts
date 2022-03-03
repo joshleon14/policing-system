@@ -4,7 +4,6 @@ import mongoose, { SchemaTypes } from 'mongoose';
 interface IDepartment {
     id: number;
     name: string;
-    supervisor: string;
     station: mongoose.Schema.Types.ObjectId;
 }
 
@@ -12,7 +11,6 @@ interface IDepartment {
 interface DepartmentDoc extends mongoose.Document {
     id: number;
     name: string;
-    supervisor: string;
     station: mongoose.Schema.Types.ObjectId;
 }
 
@@ -30,9 +28,6 @@ const DepartmentSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
-    },
-    supervisor: {
-        type: String,
     },
     station: {
         type: mongoose.Schema.Types.ObjectId,

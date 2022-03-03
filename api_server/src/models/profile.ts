@@ -2,20 +2,20 @@ import mongoose, { SchemaTypes } from 'mongoose';
 
 // Interface to define model Attributes
 interface IProfile {
-    id: number;
     user: string;
     phone_number: string;
     rank: mongoose.Schema.Types.ObjectId;
     department: mongoose.Schema.Types.ObjectId;
+    is_supervisor: boolean;
 }
 
 // Interface for Document that our model will use.
 interface ProfileDoc extends mongoose.Document {
-    id: number;
     user: string;
     phone_number: string;
     rank: mongoose.Schema.Types.ObjectId;
     department: mongoose.Schema.Types.ObjectId;
+    is_supervisor: boolean;
 }
 
 // Interface for our model to use our build function to
@@ -45,6 +45,10 @@ const ProfileSchema = new mongoose.Schema({
     department: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Department'
+    },
+    is_supervisor: {
+        type: Boolean,
+        default: false
     }
 
 });

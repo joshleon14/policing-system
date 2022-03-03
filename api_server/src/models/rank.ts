@@ -2,13 +2,11 @@ import mongoose, { SchemaTypes } from 'mongoose';
 
 // Interface to define model Attributes
 interface IRank {
-    id: number;
     name: string;
 }
 
 // Interface for Document that our model will use.
 interface RankDoc extends mongoose.Document {
-    id: number;
     name: string;
 }
 
@@ -35,5 +33,5 @@ RankSchema.statics.build = (attr: IRank) => {
 };
 
 // Create model.
-const Rank = mongoose.model<any, RankModelInterface>('Rank', RankSchema);
+const Rank = mongoose.model<RankDoc, RankModelInterface>('Rank', RankSchema);
 export default Rank;

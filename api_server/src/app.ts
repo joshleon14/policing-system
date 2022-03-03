@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 
-import { DepartmentRouter, StationRouter } from './routes';
+import { DepartmentRouter, StationRouter, RankRouter } from './routes';
 
 const app = express();
 const port = 3001;
@@ -14,6 +14,7 @@ app.use(express.urlencoded({extended: true}));
 
 app.use("/department", DepartmentRouter);
 app.use("/station", StationRouter);
+app.use("/rank", RankRouter);
 
 // creating mongoDB connection
 mongoose.connect(DBURL).then(() => {
